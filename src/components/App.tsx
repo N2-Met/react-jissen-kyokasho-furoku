@@ -1,3 +1,10 @@
+export const App = () => {
+  return <h1>メモアプリ</h1>;
+};
+
+
+
+/*
 import logo from './logo.svg';
 import './App.css';
 
@@ -23,3 +30,4 @@ function App() {
 }
 
 export default App;
+*/

@@ -12,7 +12,6 @@ export const App: FC = () => {
   const [memos, setMemos] = useState<string[]>([]);
 
   //テキストボックス入力時に入力内容をStateに反映
-  //__反映先はテキストボックスのState
   const onChangeText = (e: ChangeEvent<HTMLInputElement>) => setText(e.target.value)
 
   //「追加」ボタン押下時
@@ -72,7 +71,7 @@ const SMemoWrapper = styled.div`
 
 
 
-
+//デフォルト__テンプレート
 /*
 import logo from './logo.svg';
 import './App.css';

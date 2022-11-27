@@ -1,42 +1,27 @@
 import { ChangeEvent, useState, FC, useCallback } from "react";
 import styled from "styled-components";
 import { MemoList } from "./MemoList";
-import { useMemoList } from "../hooks/useMemoList";
 
 
 
 export const App: FC = () => {
 
-  //カスタムフックからそれぞれ取得
-  const { memos, addTodo, deleteTodo } = useMemoList();
-  //__カスタムフック化により追加
-
   //テキストボックスState
   const [text, setText] = useState<string>("");
 
   //メモ一覧State
-  //const [memos, setMemos] = useState<string[]>([]);
-  //__カスタムフック化により削除
+  const [memos, setMemos] = useState<string[]>([]);
 
   //テキストボックス入力時に入力内容をStateに反映
   const onChangeText = (e: ChangeEvent<HTMLInputElement>) => setText(e.target.value)
 
   //「追加」ボタン押下時
   const onClickAdd = () => {
-
-    //__カスタムフック化により削除
-    /*
     //State変更を正常に検知されるために新たな配列尾を生成
     const newMemos = [...memos];
     //テキストボックスの入力内容をメモ配列に追加
     newMemos.push(text);
     setMemos(newMemos);
-    */
-
-    //カスタムフックのメモ追加ロジック実行
-    addTodo(text);
-    //__カスタムフック化により追加
-
     //テキストボックスを空に
     setText("");
   };
@@ -46,8 +31,6 @@ export const App: FC = () => {
   //__const onClickDelete = (index: number) => {
   const onClickDelete = useCallback((index: number) => {
 
-    //__カスタムフック化により削除
-    /*
     //State変更を正常に検知させるため新たな配列を作成
     const newMemos = [...memos];
     //メモ配列から外套の要素を削除
@@ -56,14 +39,12 @@ export const App: FC = () => {
     /* __コンポーネント化で変更
       削除__  };
       追加__  }, [memos]);
+    */
   }, [memos]);
-  */
-    deleteTodo(index);;
-  }, [deleteTodo]);
 
   return (
     <div>
-      <h1>むずかしメモアプリ</h1>
+      <h1>簡単メモアプリ</h1>
       <input type="text" value={text} onChange={onChangeText} />
       <SButton onClick={onClickAdd}>追加</SButton>
       {/* __コンポーネント化で追加

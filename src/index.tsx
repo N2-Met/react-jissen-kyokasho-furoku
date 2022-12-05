@@ -1,4 +1,4 @@
-import React, { render } from "react-dom"; //App.jsの場合、import
+import React, { render } from "react-dom"; //import React,　…　App.jsの場合、importのみで型指定の必要なし。
 import { App } from "./components/App";
 
 const rootElement = document.getElementById("root");

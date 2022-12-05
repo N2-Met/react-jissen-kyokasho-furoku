@@ -1,11 +1,10 @@
 import { ChangeEvent, useState, FC } from "react";
 //__ChangeEvent:ユーザーによる要素の値の変更が確定した時に発行される。
-
 //__useState
 //____Reactではコンポーネントが持つ「状態」を全てStateとして管理する。
 //____上記の状態とは、エラーの有無、ﾃｷｽﾄﾎﾞｯｸｽに入力された値、ﾎﾞﾀﾝを押せるか等。
 //____Stateの状態は、変数に保有している。(State関数)
-//______テキスト参照。
+//______React実践の教科書参照。
 //______React hooksを基礎から理解する (useState編)    https://qiita.com/seira/items/f063e262b1d57d7e78b4
 
 //__FCとは   関数。FunctionCompotnentの略。constによる型定義でコンポーネントを定義できる。
@@ -17,9 +16,11 @@ import styled from "styled-components";
 
 export const App: FC = () => {
   //__↑ReactのFCをベースにオリジナルのAppコンポーネントの作成
+  //Export：書き出し　ここで書き出されたAppをインポートしているのは「index.tsx」
 
   //テキストボックスState
   const [text, setText] = useState<string>("");
+  //__テキストボックスに入力された内容、状態(state)を管理する。テキストを保持するtext,そのtextを操作するsetTextで構成される。
   //__Stateの引数について：　
   //__第一引数：State変数    状態を保有する変数
   //__第二引数：Stateを更新するための関数
@@ -30,9 +31,13 @@ export const App: FC = () => {
 
   //メモ一覧State
   const [memos, setMemos] = useState<string[]>([]);
+  //__メモ一覧の内容、状態(state)を管理する。
 
   //テキストボックス入力時に入力内容をStateに反映
   const onChangeText = (e: ChangeEvent<HTMLInputElement>) => setText(e.target.value)
+  //__ChangeEventにより、ChangeEventが埋め込まれたHTMLタグでイベント(この場合テキストの変更)が行なわれた際に、↓
+  //__アロー関数でsetTextに対し「変数e」を引き渡してsetTextを実行。
+
   //__反映先はテキストボックスのState(setTextにより)
   //__HTMLInputElement:<input>要素を操作するための特別なプロパティやメソッドを提供。
   //__(1)<input>タグ内でonchange={onChangeText}が宣言されており、↓

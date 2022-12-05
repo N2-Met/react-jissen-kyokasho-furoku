@@ -6,6 +6,7 @@ import { useMemoList } from "../hooks/useMemoList";
 
 
 export const App: FC = () => {
+  //Export：書き出し　ここで書き出されたAppをインポートしているのは「index.tsx」
 
   //カスタムフックからそれぞれ取得
   const { memos, addTodo, deleteTodo } = useMemoList();
